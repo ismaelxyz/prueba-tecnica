@@ -33,6 +33,7 @@ En la carpeta /prueba-tecnica encontrarás un proyecto de Nextjs en blanco. Debe
 ## Notas importantes
 - ![importante](https://img.shields.io/badge/-importante-red) En /prueba-tecnica hay un readme.md, al final debes completar la documentación y las mejoras que le harías a tu proyecto, considere que las mejoras que le haría a su proyecto son muy importantes para nosotros, así que no olvide completar esa sección.
 - Los commits deben ser descriptivos y en inglés, utilizando la especificación de [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+- El manejador de paquetes debe ser pnpm.
 - Puedes utilizar cualquier libreria que desees.
 - Considere que es importante el diseño y la usabilidad de la página.
 - Considere que es importante la documentación del código.
