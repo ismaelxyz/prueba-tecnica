@@ -2,7 +2,7 @@
 
 Hola desarrollador, bienvenido a la prueba técnica de Netsocs. A continuación te presentamos una serie de ejercicios que deberás resolver. La prueba técnica consta de 1 ejercicio, el cual deberás resolver en nextjs en el front y go o node (con typescript) en el back. Si tienes alguna duda, no dudes en preguntar. Puedes hacer tus consultas por github issues. Para entregar la prueba, deberás hacer un pull request a este repositorio.
 
-En la carpeta /data hay un csv con datos de ejemplo que podrás utilizar para los ejercicios.
+En la carpeta /data hay un csv con los datos que deberás utilizar para el ejercicio 1.
 
 Por favor antes de iniciar lea las [notas importantes](#notas-importantes)
 
