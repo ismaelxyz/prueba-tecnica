@@ -2,13 +2,14 @@
 
 Hola desarrollador, bienvenido a la prueba técnica de Netsocs. A continuación te presentamos una serie de ejercicios que deberás resolver. La prueba técnica consta de 1 ejercicio, el cual deberás resolver en nextjs en el front y go o node (con typescript) en el back. Si tienes alguna duda, no dudes en preguntar. Puedes hacer tus consultas por github issues. Para entregar la prueba, deberás hacer un pull request a este repositorio.
 
-En la carpeta /data hay un csv con los datos que deberás utilizar para el ejercicio 1.
 
 Por favor antes de iniciar lea las [notas importantes](#notas-importantes)
 
 ## Ejercicio 1
 
-En la carpeta /prueba-tecnica encontrarás un proyecto de Nextjs en blanco. Deberás crear una página estatica con los siguientes requisitos:
+En la carpeta `/prueba-tecnica/client` encontrarás un proyecto de Nextjs en blanco y en `/prueba-tecnica/server` una carpeta vacia para que inicies el backend alli. Adicionalmente en `/prueba-tecnica/data` encontrarás un archivo csv con los datos que deberás utilizar para el ejercicio 1.
+
+El objetivo es crear una single page application con los siguientes requisitos:
 
 - [ ] La página deberá tener un título "Prueba técnica Netsocs"
 - [ ] La página debera tener un contendor centrado de 85% de ancho y 85% de alto
