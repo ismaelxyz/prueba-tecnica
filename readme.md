@@ -11,12 +11,12 @@ En la carpeta `/prueba-tecnica/client` encontrarás un proyecto de Nextjs en bla
 
 El objetivo es crear una single page application con los siguientes requisitos:
 
-- [ ] La página deberá tener un título "Prueba técnica Netsocs"
-- [ ] La página debera tener un contendor centrado de 85% de ancho y 85% de alto
+- [X] La página deberá tener un título "Prueba técnica Netsocs"
+- [X] La página debera tener un contendor centrado de 85% de ancho y 85% de alto
 - [ ] El diseño deberá ser amigable al usuario
-- [ ] El contenedor debera tener dos pestañas que permita navegar entre ellas
-- [ ] El contenedor deberá tener un footer con el texto "Netsocs 2024"
-- [ ] El contendor deberá tener el logo de Netsocs en la parte superior izquierda. Debe usar este link y no incluir el logo en los assets del proyecto, sino cargarlo directamente desde la url https://netsocs.com/logo-netsocs-03.png, debe usar el tag <Image /> de Nextjs.
+- [X] El contenedor debera tener dos pestañas que permita navegar entre ellas
+- [X] El contenedor deberá tener un footer con el texto "Netsocs 2024"
+- [X] El contendor deberá tener el logo de Netsocs en la parte superior izquierda. Debe usar este link y no incluir el logo en los assets del proyecto, sino cargarlo directamente desde la url https://netsocs.com/logo-netsocs-03.png, debe usar el tag <Image /> de Nextjs.
 #### Pestaña 1
 - [ ] Deberá mostrar una tabla con los datos del archivo de 10 en 10 registros y usando scroll infinito.
 - [ ] La tabla debe tener un buscador que permita filtrar los datos por `First Name`, `Last Name` `City`, `Email` y `Subscription Date`. Un solo input que permita buscar en todos los campos. Es decir, si el usuario escribe "John" en el input, deberá mostrar todos los registros que tengan "John" en cualquiera de los campos mencionados, y si escribe 12/12/2020 deberá mostrar todos los registros que tengan esa fecha. La busqueda deberá ser en tiempo real, es decir, a medida que el usuario escribe, deberá ir mostrando los resultados. 
