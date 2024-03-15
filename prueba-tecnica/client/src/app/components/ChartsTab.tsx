@@ -1,14 +1,22 @@
-import { Card, CardBody } from "@nextui-org/react";
+"use client";
+
+import React from "react";
+
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+
+const data = [{name: 'Page A', uv: 400, pv: 2400, amt: 2400}];
 
 export default function ChartsTab() {
   return (
-    <Card>
-      <CardBody>
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.
-      </CardBody>
-    </Card>
+    <LineChart width={900} height={300} data={data}>
+      <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+      <CartesianGrid stroke="#ccc" />
+      <XAxis dataKey="name" />
+      <YAxis />
+    </LineChart>
   );
 }
+
+
+
+

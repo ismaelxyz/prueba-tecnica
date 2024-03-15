@@ -107,7 +107,7 @@ interface SortTing {
   sortDescriptor: SortDescriptor;
 }
 
-export default function App() {
+export default function CustomersTab() {
   const [isLoading, setIsLoading] = React.useState(true);
   // setPage(page)
   const pages = 100;
