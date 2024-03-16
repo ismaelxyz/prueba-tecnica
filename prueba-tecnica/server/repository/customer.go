@@ -9,6 +9,7 @@ import (
 
 type CustomerPageRepo struct {
 	excelDB *excelize.File
+	rows    [][]string
 }
 
 func MakeCustomerRepo(exelPath string) (CustomerPageRepo, error) {
@@ -19,7 +20,12 @@ func MakeCustomerRepo(exelPath string) (CustomerPageRepo, error) {
 		return repo, fmt.Errorf("error opening the file: %w", err)
 	}
 
-	repo = CustomerPageRepo{excelDB: dbFile}
+	rows, err := dbFile.GetRows("customers-100000")
+	if err != nil {
+		return repo, fmt.Errorf("error getting the rows of the sheet: %w", err)
+	}
+
+	repo = CustomerPageRepo{excelDB: dbFile, rows: rows[1:]}
 
 	return repo, nil
 }
@@ -30,13 +36,8 @@ func (r *CustomerPageRepo) GetPageByIndex(index int) (model.Page, error) {
 	startRow := (index-1)*10 + 1
 	endRow := index * 10
 
-	rows, err := r.excelDB.GetRows("customers-100000")
-	if err != nil {
-		return page, fmt.Errorf("error getting the rows of the sheet: %w", err)
-	}
-
 	var pageRows []model.Customer
-	for i, row := range rows {
+	for i, row := range r.rows {
 		if i+1 >= startRow && i+1 <= endRow {
 			customer := model.Customer{
 				Id:               row[1],

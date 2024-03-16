@@ -12,6 +12,14 @@ const nextConfig = {
         },
         ],
     },
+    async rewrites() {
+        return [
+          {
+            source: '/api/pages/:id',
+            destination: 'http://localhost:12345/pages/:id',
+          },
+        ]
+      },
 }
 
 export default nextConfig;

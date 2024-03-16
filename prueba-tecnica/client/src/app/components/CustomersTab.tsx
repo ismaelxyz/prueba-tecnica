@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAsyncList } from "@react-stately/data";
 import {
   Table,
@@ -14,79 +14,8 @@ import {
   Input,
 } from "@nextui-org/react";
 import Customer from "../api/models/Customers";
+import { useCollator } from "react-aria";
 
-const ROWS: Customer[] = [
-  {
-    key: "1",
-    id: "1a2b3c4d",
-    firstName: "John",
-    lastName: "Doe",
-    company: "Acme Inc.",
-    city: "New York",
-    country: "USA",
-    firstPhone: "123-456-7890",
-    secondePhone: "",
-    email: "john.doe@example.com",
-    subscriptionDate: "2024-03-14",
-    website: "www.acme.com",
-  },
-  {
-    key: "2",
-    id: "5e6f7g8h",
-    firstName: "Alice",
-    lastName: "Smith",
-    company: "Smith & Co.",
-    city: "Los Angeles",
-    country: "USA",
-    firstPhone: "987-654-3210",
-    secondePhone: "",
-    email: "alice.smith@example.com",
-    subscriptionDate: "2024-03-14",
-    website: "www.smithco.com",
-  },
-  {
-    key: "3",
-    id: "9i8j7k6l",
-    firstName: "Bob",
-    lastName: "Johnson",
-    company: "Johnson Enterprises",
-    city: "Chicago",
-    country: "USA",
-    firstPhone: "111-222-3333",
-    secondePhone: "444-555-6666",
-    email: "bob.johnson@example.com",
-    subscriptionDate: "2024-03-14",
-    website: "www.johnsonent.com",
-  },
-  {
-    key: "4",
-    id: "mno123xyz",
-    firstName: "Emily",
-    lastName: "Brown",
-    company: "Brown Corp",
-    city: "London",
-    country: "UK",
-    firstPhone: "999-888-7777",
-    secondePhone: "",
-    email: "emily.brown@example.com",
-    subscriptionDate: "2024-03-14",
-    website: "www.browncorp.co.uk",
-  },
-  {
-    key: "5",
-    id: "456abc789",
-    firstName: "Michael",
-    lastName: "Nguyen",
-    company: "Nguyen Ltd.",
-    city: "Sydney",
-    country: "Australia",
-    firstPhone: "333-444-5555",
-    secondePhone: "",
-    email: "michael.nguyen@example.com",
-    subscriptionDate: "2024-03-14",
-    website: "www.nguyenltd.com.au",
-  },
-];
 
 const COLUMNS = [
   { key: "id", label: "Customer Id" },
@@ -109,32 +38,37 @@ interface SortTing {
 
 export default function CustomersTab() {
   const [isLoading, setIsLoading] = React.useState(true);
-  // setPage(page)
-  const pages = 100;
-  const page = 1;
+  const [page, setPage] = React.useState(1);
+  const pages = 10000;
+  let collator = useCollator();
 
-  let list = useAsyncList({
+  let list = useAsyncList<Customer>({
     async load({ signal }) {
-      /*
-      let res = await fetch("https://swapi.py4e.com/api/people/?search", {
+      console.log('Load data ', page);
+      let res = await fetch(`/api/pages/${page}`, {
         signal,
-      });*/
+      });
 
-      let json = { results: ROWS }; // await res.json();
+      let json = await res.json();
       setIsLoading(false);
-
+      
       return {
-        items: json.results,
+        items: json.page.rows,
       };
     },
-    async sort({ items, sortDescriptor }) {
+
+    async sort({ items, sortDescriptor }: SortTing) {
       return {
         items: items.sort((a, b) => {
-          // console.log(a[sortDescriptor.column]);
-          let first = a[sortDescriptor.column]; // a[sortDescriptor.column ?? 0];
-          let second = b[sortDescriptor.column]; // b[sortDescriptor.column];
-          let cmp =
-            (parseInt(first) || first) < (parseInt(second) || second) ? -1 : 1;
+          let cmp;
+          let first = a[sortDescriptor.column];
+          let second = b[sortDescriptor.column];
+          
+          if (sortDescriptor.column === "subscriptionDate") {
+            cmp = collator.compare(new Date(first), new Date(second));
+          } else {
+            cmp = collator.compare(first, second);
+          }
 
           if (sortDescriptor.direction === "descending") {
             cmp *= -1;
@@ -145,6 +79,13 @@ export default function CustomersTab() {
       };
     },
   });
+  
+  useEffect(() => {
+    setIsLoading(true);
+    
+    console.log('xch: ', page, ' - ',  list.items.length);
+    list.reload();  
+  }, [page]);
 
   return (
     <Table
@@ -167,6 +108,7 @@ export default function CustomersTab() {
             label="Customer search"
             placeholder="Enter Customer Data"
             className="max-w-[220px]"
+            onChange={(c) => console.log('It is C', c)}
           />
         </div>
       }
@@ -180,7 +122,7 @@ export default function CustomersTab() {
               color="primary"
               page={page}
               total={pages}
-              onChange={(page) => null}
+              onChange={(newPage) => setPage(newPage)}
             />
           </div>
         ) : null
@@ -194,7 +136,7 @@ export default function CustomersTab() {
         )}
       </TableHeader>
       <TableBody
-        items={ROWS}
+        items={list.items}
         isLoading={isLoading}
         loadingContent={<Spinner label="Loading..." />}
       >

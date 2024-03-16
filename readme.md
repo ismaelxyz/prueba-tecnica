@@ -21,9 +21,9 @@ El objetivo es crear una single page application con los siguientes requisitos:
 - [X] Deberá mostrar una tabla con los datos del archivo de 10 en 10 registros y usando scroll infinito.
 - [ ] La tabla debe tener un buscador que permita filtrar los datos por `First Name`, `Last Name` `City`, `Email` y `Subscription Date`. Un solo input que permita buscar en todos los campos. Es decir, si el usuario escribe "John" en el input, deberá mostrar todos los registros que tengan "John" en cualquiera de los campos mencionados, y si escribe 12/12/2020 deberá mostrar todos los registros que tengan esa fecha. La busqueda deberá ser en tiempo real, es decir, a medida que el usuario escribe, deberá ir mostrando los resultados. 
 - [ ] No deberá recargar (el efecto de refresh o cuando presionas f5 por ejemplo) la página al buscar.
-- [ ] Si el input está vacío, deberá mostrar todos los registros. 
-- [ ] La busqueda no debe ser sensible a mayúsculas o minúsculas.
-- [ ] En los headers de la tabla deberá haber un botón que permita ordenar los datos por `First Name` y `Subscription Date` de forma ascendente y descendente, es decir, si el usuario presiona el botón una vez, deberá ordenar los datos de forma ascendente, y si presiona nuevamente, deberá ordenar los datos de forma descendente. Ademas debe incluir un icono que indique el orden actual.
+- [X] Si el input está vacío, deberá mostrar todos los registros. 
+- [X] La busqueda no debe ser sensible a mayúsculas o minúsculas.
+- [X] En los headers de la tabla deberá haber un botón que permita ordenar los datos por `First Name` y `Subscription Date` de forma ascendente y descendente, es decir, si el usuario presiona el botón una vez, deberá ordenar los datos de forma ascendente, y si presiona nuevamente, deberá ordenar los datos de forma descendente. Ademas debe incluir un icono que indique el orden actual.
 #### Pestaña 2
 - [ ] Deberá mostrar un gráfico de lineas que muestre la cantidad de registros por fecha. El eje X deberá ser la fecha de subscripcion y el eje Y los paises. La idea es visualizar la cantidad de registros por fecha y por pais. El intervalo de las fechas deberá ser de 1 mes, es decir el eje X deberá mostrar la cantidad de registros por mes.
 - [ ] Deberá mostrar un selector multiple que permita filtrar los datos por pais. Si el usuario selecciona un pais, deberá mostrar solo los registros de ese pais. Si el usuario selecciona mas de un pais, deberá mostrar los registros de esos paises. Si no selecciona ningun pais, deberá mostrar todos los registros.

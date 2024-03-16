@@ -43,6 +43,8 @@ func getPage(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
+// func getFilter(w http.ResponseWriter, r *http.Request) { }
+
 func init() {
 	err := godotenv.Load()
 	if err != nil {
